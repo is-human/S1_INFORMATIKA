@@ -1,4 +1,4 @@
 # CATATAN
 
 ### Link mantap-mantap
-- [MinGW](https://techdecodetutorials.com/downloads/mingw.exe)
+- Tutorial install dan download [MinGW](https://techdecodetutorials.com/how-to-install-mingw-c-c-compiler-in-windows-11/) C/C++ Compiler Win11
