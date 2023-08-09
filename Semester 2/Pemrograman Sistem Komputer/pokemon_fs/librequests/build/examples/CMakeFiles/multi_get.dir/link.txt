@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/multi_get.dir/multi_get.c.o -o multi_get  ../src/librequests.a -lcurl 

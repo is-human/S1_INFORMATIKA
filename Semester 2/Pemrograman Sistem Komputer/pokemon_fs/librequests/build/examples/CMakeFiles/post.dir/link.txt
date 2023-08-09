@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/post.dir/post.c.o -o post  ../src/librequests.a -lcurl 

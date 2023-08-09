@@ -1,0 +1,13 @@
+/home/pandu/pokemon_fs/librequests/build/CMakeFiles/edit_cache.dir
+/home/pandu/pokemon_fs/librequests/build/CMakeFiles/rebuild_cache.dir
+/home/pandu/pokemon_fs/librequests/build/src/CMakeFiles/requests.dir
+/home/pandu/pokemon_fs/librequests/build/src/CMakeFiles/edit_cache.dir
+/home/pandu/pokemon_fs/librequests/build/src/CMakeFiles/rebuild_cache.dir
+/home/pandu/pokemon_fs/librequests/build/test/CMakeFiles/test.dir
+/home/pandu/pokemon_fs/librequests/build/test/CMakeFiles/edit_cache.dir
+/home/pandu/pokemon_fs/librequests/build/test/CMakeFiles/rebuild_cache.dir
+/home/pandu/pokemon_fs/librequests/build/examples/CMakeFiles/get.dir
+/home/pandu/pokemon_fs/librequests/build/examples/CMakeFiles/multi_get.dir
+/home/pandu/pokemon_fs/librequests/build/examples/CMakeFiles/post.dir
+/home/pandu/pokemon_fs/librequests/build/examples/CMakeFiles/edit_cache.dir
+/home/pandu/pokemon_fs/librequests/build/examples/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/get.dir/get.c.o -o get  ../src/librequests.a -lcurl 
