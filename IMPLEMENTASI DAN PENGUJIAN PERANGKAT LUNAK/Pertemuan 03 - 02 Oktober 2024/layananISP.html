@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Layanan ISP</title>
+  </head>
+  <body>
+    <div style="display: flex; justify-content:center;">
+      <button onclick="layananISP()" style="padding: 0.5rem 1rem; background: #1c7cc5; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">Layanan ISP</button>
+    </div>
+    <script>
+      let pengguna = {
+        nomor: "081234567890",
+        saldo: 50000,
+        autoTopup: [
+          {
+            nomorTujuan: "082345678901",
+            nominal: 20000,
+            frekuensi: "hari"
+          }
+        ]
+      };
+
+      let nomorUndian = [
+        "123456789",
+        "987654321"
+      ]
+
+      function layananISP() {
+
+        // Fungsi untuk menampilkan menu utama
+        function tampilkanMenu() {
+          let pilihan = prompt("Pilih layanan:\n1. Transfer Pulsa\n2. Minta Pulsa\n3. Auto TP\n4. Delete Auto TP\n5. List Auto TP\n6. Cek Kupon Undian TP");
+          return pilihan;
+        }
+
+        // Fungsi untuk melakukan transfer pulsa
+        function transferPulsa() {
+          let nomorTujuan = prompt("Masukkan nomor tujuan:");
+          let nominal = pilihNominalPulsa("Pilih nominal pulsa untuk dikirim ke " + nomorTujuan +":");
+          if (nominal == null) return null;
+          alert(
+            "Pulsa berhasil ditransfer ke nomor " +
+              nomorTujuan +
+              " sebesar." +
+              nominal
+          );
+        }
+
+        // Fungsi untuk menampilkan menu pilihan nominal pulsa
+        function pilihNominalPulsa(pesan = "Pilih nominal pulsa:") {
+          while(true) {
+            let pilihanNominal = prompt(pesan + "\n1. 100.000\n2. 75.000\n3. 50.000\n4. 25.000\n5. 20.000\n6. 15.000\n7. 10.000\n8. 5.000");
+            switch (pilihanNominal) {
+              case "1": return 100000;
+              case "2": return 75000;
+              case "3": return 50000;
+              case "4": return 25000;
+              case "5": return 20000;
+              case "6": return 15000;
+              case "7": return 10000;
+              case "8": return 5000;
+              case null: return;
+              default: alert("Pilihan tidak valid");
+            }
+          }
+        }
+        
+        // Fungsi untuk menampilkan menu pilihan frekuensi
+        function pilihFrekuensi(pesan = "Pilih frekuensi:") {
+          while(true) {
+            let pilihanNominal = prompt(pesan + "\n1. Harian\n2. Mingguan\n3. Bulanan\n4. Tahunan");
+            switch (pilihanNominal) {
+              case "1": return "hari";
+              case "2": return "minggu";
+              case "3": return "bulan";
+              case "4": return "tahun";
+              case null: return;
+              default: alert("Pilihan tidak valid");
+            }
+          }
+        }
+
+        // Fungsi untuk melakukan permintaan pulsa
+        function mintaPulsa() {
+          let nominal = pilihNominalPulsa("Pilih nominal pulsa untuk yang diminta:");
+          if (nominal == null) return null;
+          let nomorTujuan = prompt("Masukkan nomor tujuan:");          
+          alert(
+            "Permintaan kamu sedang diproses. Saldo sebesar " + nominal + " akan ditransfer ke nomor " + nomorTujuan + " setelah mendapat persetujuan.");
+        }
+
+        // Fungsi untuk menampilkan jadwal auto top-up
+        function tampilkanJadwal() {
+          let jadwal = "Tidak ada jadwal auto top-up.";
+          let num = 1;
+          if (pengguna.autoTopup.length > 0) {
+            pengguna.autoTopup.forEach((element, index) => {            
+              if (index == 0) {
+                jadwal = "\n" + num.toString() + ". Top-up " + element.nominal.toString() + " ke nomor " + element.nomorTujuan.toString() + " setiap " + element.frekuensi;
+              } else {
+                jadwal += "\n" + num.toString() + ". Top-up " + element.nominal.toString() + " ke nomor " + element.nomorTujuan.toString() + " setiap " + element.frekuensi;
+              }
+              num++;
+            });
+          }
+          return jadwal;
+        }
+
+        // Fungsi untuk menambahkan frekuensi auto top-up
+        function tambahAutoTP() {
+          let nomorTujuan = prompt("Masukkan nomor tujuan:");
+          if (nomorTujuan == null) return null;
+          let nominal = pilihNominalPulsa("Pilih nominal pulsa untuk top-up ke " + nomorTujuan +":");
+          if (nominal == null) return null;
+          let frekuensi = pilihFrekuensi("Pilih frekuensi auto top-up ke " + nomorTujuan +":");
+          if (frekuensi == null) return null;
+          pengguna.autoTopup.push({nomorTujuan, nominal, frekuensi});
+          alert("Frekuensi auto top-up berhasil disimpan.\nTop-up " + nominal + " ke " + nomorTujuan + " setiap " + frekuensi + ".");
+        }
+
+        // Fungsi untuk menghapus jadwal auto top-up
+        function hapusAutoTP() {
+          while(true) {
+            let jadwal = "Pilih jadwal untuk di hapus: " + tampilkanJadwal();
+            let pilihanJadwal = prompt(jadwal);
+            if (pilihanJadwal == null) return null;
+            let index = pilihanJadwal - 1;
+            let tempJadwal = pengguna.autoTopup[index];
+            if (index > -1 && index < pengguna.autoTopup.length) {
+              pengguna.autoTopup = pengguna.autoTopup.slice(0, index).concat(pengguna.autoTopup.slice(index + 1));
+              alert("Jadwal auto top-up " + tempJadwal.nominal + " ke " + tempJadwal.nomorTujuan + " setiap " + tempJadwal.frekuensi + " berhasil dihapus.");
+            } else {
+              alert("Pilihan tidak valid");
+            }
+          }
+        }
+
+        // Fungsi untuk memeriksa kupon undian top-up
+        function cekKuponUndianTP() {
+          let nomor = prompt("Masukkan nomor undian:");          
+          if (nomor == null) return null;
+          if (nomorUndian.find(element => element == nomor)) {
+            alert("Selamat, nomor undian " + nomor + " berhasil klaim.\nPulsa sebesar 100000 akan dikirim ke nomor kamu.");
+          } else {
+            alert("Sayang sekali, nomor kamu tidak beruntung.");
+          }
+        }
+
+        // Looping untuk terus menampilkan menu
+        while (true) {
+          let pilihanMenu = tampilkanMenu();
+          switch (pilihanMenu) {
+            case "1":
+              transferPulsa();
+              break;
+            case "2":
+              mintaPulsa();
+              break;
+            case "3":
+              tambahAutoTP();
+              break;
+            case "4":
+              if (pengguna.autoTopup.length > 0) hapusAutoTP();
+              else alert("Tidak ada jadwal auto top-up.")
+              break;
+            case "5":
+              if (pengguna.autoTopup.length > 0) {
+                alert("Daftar jadwal auto top-up kamu:" + tampilkanJadwal());
+              }
+              else alert("Tidak ada jadwal auto top-up.")
+              break;
+            case "6":
+              cekKuponUndianTP();
+              break;
+            case null:
+              return;
+            default:
+              alert("Pilihan tidak valid");
+          }
+        }
+      }
+
+      layananISP();
+    </script>
+  </body>
+</html>
