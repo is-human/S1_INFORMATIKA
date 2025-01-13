@@ -1,0 +1,7 @@
+Old.log
+Have some malicious url
+https://telkomuniversityofficial-my.sharepoint.com/:u:/g/personal/rizkyfenaldo_telkomuniversity_ac_id/EcyNiJEV1JdLsqHr1g6Gp2QBf_okPqVebY6mEdt0Av-HJw?e=xA4cGs
+
+New.log
+90% clean
+https://telkomuniversityofficial-my.sharepoint.com/:u:/g/personal/rizkyfenaldo_telkomuniversity_ac_id/EfFXKXjhCdJHl5sL6VzqfjEBOuos6UvV70WYX0sqhBcd1g?e=g76Pqu
